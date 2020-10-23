@@ -13,9 +13,12 @@ function main() {
     })
     // register drivers with healthz
     z.Drivers = [d]
-    z.Status = {
-      "Arbitrary": "data",
-      "Foo": "bar",
+    z.Status = function() {
+      return {
+        "Arbitrary": "data",
+        "Foo": "bar",
+        "Time": new Date(),
+      }
     }
     // register handlers with app
     //z.HTTPHandlers(app)

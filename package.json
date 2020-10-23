@@ -1,6 +1,6 @@
 {
   "name": "@robertlestak/node-zpages",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Basic z-pages for application health checking",
   "main": "index.js",
   "scripts": {

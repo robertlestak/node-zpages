@@ -96,21 +96,44 @@ class ZPages {
     async Live(req, res) {
         await this.Up(req, res)
     }
-    // Version returns the environment variable VERSION
-    // if VERSION variable does not exist, throw error
+
+    // statuszDefault sets default values on Status object before
+    // returning to Statusz
+    statuszDefault(m, k, v) {
+        if (!v) {
+            return m
+        }
+        var f = false
+        for (var kk in m) {
+            if (kk === k) {
+                f = true
+                break
+            } 
+        }
+        if (!f) {
+            m[k] = v
+        }
+        return m
+    }
+
+    // statuszDefaults sets defaults and returns final map
+    statuszDefaults(m) {
+        if (!process.env.ENV && process.env.ENVIRONMENT) {
+            process.env.ENV = process.env.ENVIRONMENT
+        }
+        m = this.statuszDefault(m, "Environment", process.env.ENV)
+        m = this.statuszDefault(m, "Version", process.env.VERSION)
+        return m
+    }
+
+    // Statusz returns the status object
     async Statusz(req, res) {
         if (!this.Status) {
-            this.Status = {}
+            this.Status = function() {
+                return {}
+            }
         }
-        let v = process.env.VERSION
-        if (v !== null && !this.Status.Version) {
-            this.Status.Version = v
-        }
-        let e = process.env.ENV || process.env.ENVIRONMENT
-        if (e !== null && !this.Status.Environment) {
-            this.Status.Environment = e
-        }
-        res.write(JSON.stringify(this.Status))
+        res.write(JSON.stringify(this.statuszDefaults(this.Status())))
         res.end()
     }
 
