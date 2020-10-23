@@ -1,0 +1,31 @@
+{
+  "name": "@robertlestak/node-zpages",
+  "version": "0.0.1",
+  "description": "Basic z-pages for application health checking",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/robertlestak/node-zpages"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "author": "Robert Lestak",
+  "license": "MIT",
+  "dependencies": {
+    "@elastic/elasticsearch": "^7.9.1",
+    "aws-sdk": "^2.775.0",
+    "mysql": "^2.18.1",
+    "node-fetch": "^2.6.1",
+    "pg": "^8.4.1",
+    "redis": "^3.0.2"
+  },
+  "devDependencies": {
+    "express": "^4.17.1",
+    "http": "0.0.1-security",
+    "koa": "^2.13.0"
+  }
+}
