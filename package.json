@@ -1,6 +1,6 @@
 {
   "name": "@robertlestak/node-zpages",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Basic z-pages for application health checking",
   "main": "index.js",
   "scripts": {
@@ -15,7 +15,7 @@
   },
   "author": "Robert Lestak",
   "license": "MIT",
-  "dependencies": {
+  "peerDependencies": {
     "@elastic/elasticsearch": "^7.9.1",
     "aws-sdk": "^2.775.0",
     "mysql": "^2.18.1",
